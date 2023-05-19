@@ -1,0 +1,106 @@
+﻿<Window x:Class="Erringulator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Erringulator"
+        mc:Ignorable="d" d:Title="Erringulator 1.0"
+        Title="{Binding TitleVersion}"
+        Left="{Binding WindowLeft, Mode=TwoWay}" Top="{Binding WindowTop, Mode=TwoWay}"
+        MinWidth="600" Width="800" SizeToContent="Height" ResizeMode="NoResize" 
+        Closed="Window_Closed">
+    <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Regulation">
+            <StackPanel>
+                <local:PathInput 
+                    Label="Input Directory" 
+                    Path="{Binding InputDir, Mode=TwoWay}"/>
+                <CheckBox IsChecked="{Binding LoadBackup}">Load backup if available</CheckBox>
+                <local:PathInput 
+                    Label="Output Directory (leave blank to use input directory)"
+                    Path="{Binding OutputDir, Mode=TwoWay}"/>
+                <Label Content="Progress"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <local:TextProgress x:Name="Progress"/>
+                    <Button Grid.Column="1" Click="Button_Click">Randomize</Button>
+                    <Button Grid.Column="2" Visibility="{Binding DebugVisibility}">Restore</Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Grid.Row="1">
+            <GroupBox Header="Options">
+                <StackPanel>
+                    <Label>Projectile Quantity</Label>
+                    <ComboBox SelectedValuePath="Tag" SelectedValue="{Binding ProjectileQuantity}">
+                        <ComboBoxItem Tag="Minimum">Minimal</ComboBoxItem>
+                        <ComboBoxItem Tag="Medium">Restricted (recommended; relatively stable, and still very dramatic)</ComboBoxItem>
+                        <ComboBoxItem Tag="Maximum">Unlimited (expect crashes)</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Options - Not yet implemented" Visibility="{Binding DebugVisibility}">
+                <StackPanel>
+                    <Label IsEnabled="False">Seed (leave blank for random seed)</Label>
+                    <TextBox IsEnabled="False"></TextBox>
+                    <Label IsEnabled="False">Last Seed</Label>
+                    <TextBox IsEnabled="False"></TextBox>
+                    <Label IsEnabled="False">Eligibility</Label>
+                    <ComboBox IsEnabled="False" SelectedIndex="0">
+                        <ComboBoxItem>Blacklist (excludes critical entities like flasks)</ComboBoxItem>
+                        <ComboBoxItem>Suffering (includes everything; guaranteed jank)</ComboBoxItem>
+                    </ComboBox>
+                    <Label IsEnabled="False">Values</Label>
+                    <ComboBox IsEnabled="False" SelectedIndex="1">
+                        <ComboBoxItem>Weighted</ComboBoxItem>
+                        <ComboBoxItem>Chaotic</ComboBoxItem>
+                    </ComboBox>
+                    <Label IsEnabled="False">Coherence</Label>
+                    <ComboBox IsEnabled="False" SelectedIndex="1">
+                        <ComboBoxItem>High</ComboBoxItem>
+                        <ComboBoxItem>Medium</ComboBoxItem>
+                        <ComboBoxItem>Low</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <GroupBox Grid.RowSpan="2" Grid.Column="1" Header="Randomize" MinWidth="100">
+            <StackPanel>
+                <Label>Gameplay</Label>
+                <CheckBox IsChecked="{Binding RandomizeArmor}">Armor</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizeRings}">Rings</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizeSpells}">Spells</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizeUsableItems}">Usable Items</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizeWeapons}">Weapons</CheckBox>
+                <Separator/>
+                <Label>Visuals</Label>
+                <CheckBox IsChecked="{Binding RandomizeDecals}">Decals</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizeFaces}">Faces</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizeGrass}">Grass</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizePhantoms}">Phantom Colors</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizePropEffects}">Prop Effects</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizeWeather}">Weather</CheckBox>
+                <CheckBox IsChecked="{Binding RandomizeWetness}">Wetness</CheckBox>
+                <Separator/>
+                <Label Foreground="Red">DANGER ZONE</Label>
+                <CheckBox IsChecked="{Binding RandomizeProjectiles}">Projectiles</CheckBox>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
