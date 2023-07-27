@@ -22,7 +22,7 @@ namespace Erringulator.Generator
         public Generator(GeneratorSettings settings)
         {
             Settings = settings;
-            Rand = new Random();
+            Rand = new Random(Settings.Seed.GetHashCode());
         }
 
         public void Generate()
@@ -41,6 +41,7 @@ namespace Erringulator.Generator
             string dir = Path.GetDirectoryName(path);
             string name = Path.GetFileNameWithoutExtension(path);
             string ext = Path.GetExtension(path);
+            throw new Exception();
             return Path.Combine(dir, $"{name}-erringulator-backup{ext}");
         }
 

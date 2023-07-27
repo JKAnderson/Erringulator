@@ -250,5 +250,29 @@ namespace Erringulator.Properties {
                 this["RandomizeUsableItems"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Seed {
+            get {
+                return ((string)(this["Seed"]));
+            }
+            set {
+                this["Seed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastSeed {
+            get {
+                return ((string)(this["LastSeed"]));
+            }
+            set {
+                this["LastSeed"] = value;
+            }
+        }
     }
 }

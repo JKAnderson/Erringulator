@@ -46,6 +46,20 @@
         <StackPanel Grid.Row="1">
             <GroupBox Header="Options">
                 <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label>Seed (leave blank for random seed)</Label>
+                        <TextBox Grid.Row="1" Text="{Binding Seed}"/>
+                        <Label Grid.Column="1">Last Seed</Label>
+                        <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding LastSeed}"/>
+                    </Grid>
                     <Label>Projectile Quantity</Label>
                     <ComboBox SelectedValuePath="Tag" SelectedValue="{Binding ProjectileQuantity}">
                         <ComboBoxItem Tag="Minimum">Minimal</ComboBoxItem>
@@ -56,10 +70,6 @@
             </GroupBox>
             <GroupBox Header="Options - Not yet implemented" Visibility="{Binding DebugVisibility}">
                 <StackPanel>
-                    <Label IsEnabled="False">Seed (leave blank for random seed)</Label>
-                    <TextBox IsEnabled="False"></TextBox>
-                    <Label IsEnabled="False">Last Seed</Label>
-                    <TextBox IsEnabled="False"></TextBox>
                     <Label IsEnabled="False">Eligibility</Label>
                     <ComboBox IsEnabled="False" SelectedIndex="0">
                         <ComboBoxItem>Blacklist (excludes critical entities like flasks)</ComboBoxItem>

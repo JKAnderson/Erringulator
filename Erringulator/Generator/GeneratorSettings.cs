@@ -8,6 +8,8 @@
 
         public string OutputPath { get; }
 
+        public string Seed { get; }
+
         public ProjectileQuantity ProjectileQuantity { get; }
 
         public bool RandomizeArmor { get; }
@@ -36,7 +38,7 @@
 
         public bool RandomizeWetness { get; }
 
-        public GeneratorSettings(string inputPath, bool loadBackup, string outputPath, ProjectileQuantity projectileQuantity,
+        public GeneratorSettings(string inputPath, bool loadBackup, string outputPath, string seed, ProjectileQuantity projectileQuantity,
             bool randomizeArmor, bool randomizeDecal, bool randomizeFaces, bool randomizeGrass, 
             bool randomizePhantoms, bool randomizeProjectiles, bool randomizePropEffects, bool randomizeRings, bool randomizeSpells, bool randomizeUsableItems,
             bool randomizeWeapons, bool randomizeWeather, bool randomizeWetness)
@@ -44,6 +46,7 @@
             InputPath = inputPath;
             LoadBackup = loadBackup;
             OutputPath = outputPath;
+            Seed = seed;
             ProjectileQuantity = projectileQuantity;
 
             RandomizeArmor = randomizeArmor;

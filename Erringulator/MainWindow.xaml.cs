@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Erringulator.Generator;
+using System;
+using System.Diagnostics;
 using System.Media;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -32,24 +34,25 @@ namespace Erringulator
             Progress.Bar.Minimum = 0;
             Progress.Bar.Maximum = 1;
             Progress.Text = "Randomizing...";
-            var generator = new Generator.Generator(Options.GetGeneratorSettings());
-#if DEBUG
-            await Task.Run(generator.Generate);
-#else
+
+            GeneratorSettings generatorSettings = Options.GetGeneratorSettings();
+            var generator = new Generator.Generator(generatorSettings);
+
             try
             {
                 await Task.Run(generator.Generate);
+                Options.LastSeed = generatorSettings.Seed;
+                SystemSounds.Beep.Play();
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!Debugger.IsAttached)
             {
                 MessageBox.Show($"An error occurred during randomization:\n\n{ex}", 
                     "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-#endif
+
             Progress.Bar.Value = 1;
             Progress.Text = "Done!";
             IsEnabled = true;
-            SystemSounds.Beep.Play();
         }
     }
 }
