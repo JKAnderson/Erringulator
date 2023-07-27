@@ -41,7 +41,6 @@ namespace Erringulator.Generator
             string dir = Path.GetDirectoryName(path);
             string name = Path.GetFileNameWithoutExtension(path);
             string ext = Path.GetExtension(path);
-            throw new Exception();
             return Path.Combine(dir, $"{name}-erringulator-backup{ext}");
         }
 
