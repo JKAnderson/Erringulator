@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
-    internal partial class Generator
+    internal partial class Randomizer
     {
         private void ProcessProtector(PARAM param)
         {
-            PARAM.Row[] rows = FilterRows(param.Rows, GeneratorData.Static.BlacklistProtector);
+            PARAM.Row[] rows = FilterRows(param.Rows, RandomizerData.Static.BlacklistProtector);
             foreach (PARAM.Row[] group in rows.GroupBy(row => row["protectorCategory"].Value).Select(g => g.ToArray()))
             {
                 Dictionary<string, List<object>> values = GetAllValues(group, param.AppliedParamdef);

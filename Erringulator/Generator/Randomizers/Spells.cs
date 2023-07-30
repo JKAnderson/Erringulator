@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
-    internal partial class Generator
+    internal partial class Randomizer
     {
         private void ProcessMagic(PARAM param)
         {

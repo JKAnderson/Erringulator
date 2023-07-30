@@ -1,4 +1,4 @@
-﻿using Erringulator.Generator;
+﻿using Erringulator.Randomizer;
 using System;
 using System.Diagnostics;
 using System.Media;
@@ -35,8 +35,8 @@ namespace Erringulator
             Progress.Bar.Maximum = 1;
             Progress.Text = "Randomizing...";
 
-            GeneratorSettings generatorSettings = Options.GetGeneratorSettings();
-            var generator = new Generator.Generator(generatorSettings);
+            RandomizerSettings generatorSettings = Options.GetGeneratorSettings();
+            var generator = new Randomizer.Randomizer(generatorSettings);
 
             try
             {

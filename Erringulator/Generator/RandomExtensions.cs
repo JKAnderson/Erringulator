@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
     internal static class RandomExtensions
     {

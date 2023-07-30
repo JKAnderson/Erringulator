@@ -1,13 +1,13 @@
 ﻿using SoulsFormats;
 using System.Collections.Generic;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
-    internal partial class Generator
+    internal partial class Randomizer
     {
         private void ProcessAccessory(PARAM param)
         {
-            PARAM.Row[] rows = FilterRows(param.Rows, GeneratorData.Static.BlacklistAccessory);
+            PARAM.Row[] rows = FilterRows(param.Rows, RandomizerData.Static.BlacklistAccessory);
             Dictionary<string, object[]> options = GetAllOptions(rows, param.AppliedParamdef);
 
             foreach (PARAM.Row row in rows)

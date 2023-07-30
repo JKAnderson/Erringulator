@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
-    internal partial class Generator
+    internal partial class Randomizer
     {
         private void ProcessWeapon(PARAM param)
         {
-            PARAM.Row[] rows = FilterRows(param.Rows, GeneratorData.Static.BlacklistWeapon);
-            foreach (HashSet<ushort> weaponGroup in GeneratorData.Static.WepTypeGroups)
+            PARAM.Row[] rows = FilterRows(param.Rows, RandomizerData.Static.BlacklistWeapon);
+            foreach (HashSet<ushort> weaponGroup in RandomizerData.Static.WepTypeGroups)
             {
                 PARAM.Row[] group = rows.Where(r => weaponGroup.Contains((ushort)r["wepType"].Value)).ToArray();
                 Dictionary<string, List<object>> values = GetAllValues(group, param.AppliedParamdef);

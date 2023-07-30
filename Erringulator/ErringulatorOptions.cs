@@ -1,4 +1,4 @@
-﻿using Erringulator.Generator;
+﻿using Erringulator.Randomizer;
 using System;
 using System.ComponentModel;
 using System.Reflection;
@@ -245,7 +245,7 @@ namespace Erringulator
             Settings.Save();
         }
 
-        public GeneratorSettings GetGeneratorSettings()
+        public RandomizerSettings GetGeneratorSettings()
         {
             string seed = Seed;
             if (string.IsNullOrWhiteSpace(seed))
@@ -256,7 +256,7 @@ namespace Erringulator
                 seed = new string(chars);
             }
 
-            return new GeneratorSettings(InputDir, LoadBackup, OutputDir, seed, ProjectileQuantity,
+            return new RandomizerSettings(InputDir, LoadBackup, OutputDir, seed, ProjectileQuantity,
                 RandomizeArmor, RandomizeDecals, RandomizeFaces, RandomizeGrass,
                 RandomizePhantoms, RandomizeProjectiles, RandomizePropEffects, RandomizeRings, RandomizeSpells, RandomizeUsableItems,
                 RandomizeWeapons, RandomizeWeather, RandomizeWetness);

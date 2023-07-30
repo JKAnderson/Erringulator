@@ -1,4 +1,4 @@
-﻿namespace Erringulator.Generator
+﻿namespace Erringulator.Randomizer
 {
     internal enum ProjectileQuantity
     {

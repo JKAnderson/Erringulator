@@ -1,13 +1,13 @@
 ﻿using SoulsFormats;
 using System.Collections.Generic;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
-    internal partial class Generator
+    internal partial class Randomizer
     {
         private void ProcessBullet(PARAM param)
         {
-            PARAM.Row[] rows = FilterRows(param.Rows, GeneratorData.Static.BlacklistBullet);
+            PARAM.Row[] rows = FilterRows(param.Rows, RandomizerData.Static.BlacklistBullet);
             Dictionary<string, object[]> options = GetAllOptions(rows, param.AppliedParamdef);
             Dictionary<string, List<object>> values = GetAllValues(rows, param.AppliedParamdef);
             foreach (List<object> list in values.Values)

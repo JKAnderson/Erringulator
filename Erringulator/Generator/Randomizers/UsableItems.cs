@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
-    internal partial class Generator
+    internal partial class Randomizer
     {
         private void ProcessGoods(PARAM param)
         {
             PARAM.Row[] rows = FilterRows(param.Rows.Where(
                 row => (byte)row["goodsType"].Value == 0
-            ), GeneratorData.Static.BlacklistGoods);
+            ), RandomizerData.Static.BlacklistGoods);
 
             Dictionary<string, object[]> options = GetAllOptions(rows, param.AppliedParamdef);
             Dictionary<string, List<object>> values = GetAllValues(rows, param.AppliedParamdef);

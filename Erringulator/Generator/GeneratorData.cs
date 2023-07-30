@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text.Json;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
-    internal class GeneratorData
+    internal class RandomizerData
     {
         public HashSet<int> BlacklistAccessory { get; set; }
 
@@ -18,15 +18,15 @@ namespace Erringulator.Generator
 
         public HashSet<ushort>[] WepTypeGroups { get; set; }
 
-        public static GeneratorData Static { get; }
+        public static RandomizerData Static { get; }
 
-        static GeneratorData()
+        static RandomizerData()
         {
             var options = new JsonSerializerOptions
             {
                 ReadCommentHandling = JsonCommentHandling.Skip,
             };
-            Static = JsonSerializer.Deserialize<GeneratorData>(Resources.GeneratorData, options);
+            Static = JsonSerializer.Deserialize<RandomizerData>(Resources.GeneratorData, options);
         }
     }
 }

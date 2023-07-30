@@ -1,8 +1,8 @@
 ﻿using SoulsFormats;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
-    internal partial class Generator
+    internal partial class Randomizer
     {
         private void ProcessWetAspect(PARAM param)
         {

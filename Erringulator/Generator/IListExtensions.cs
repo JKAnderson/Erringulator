@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
     internal static class IListExtensions
     {

@@ -1,6 +1,6 @@
-﻿namespace Erringulator.Generator
+﻿namespace Erringulator.Randomizer
 {
-    internal class GeneratorSettings
+    internal class RandomizerSettings
     {
         public string InputPath { get; }
 
@@ -38,7 +38,7 @@
 
         public bool RandomizeWetness { get; }
 
-        public GeneratorSettings(string inputPath, bool loadBackup, string outputPath, string seed, ProjectileQuantity projectileQuantity,
+        public RandomizerSettings(string inputPath, bool loadBackup, string outputPath, string seed, ProjectileQuantity projectileQuantity,
             bool randomizeArmor, bool randomizeDecal, bool randomizeFaces, bool randomizeGrass, 
             bool randomizePhantoms, bool randomizeProjectiles, bool randomizePropEffects, bool randomizeRings, bool randomizeSpells, bool randomizeUsableItems,
             bool randomizeWeapons, bool randomizeWeather, bool randomizeWetness)

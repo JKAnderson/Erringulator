@@ -1,9 +1,9 @@
 ﻿using SoulsFormats;
 using System.Collections.Generic;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
-    internal partial class Generator
+    internal partial class Randomizer
     {
         private void ProcessFace(PARAM param)
         {

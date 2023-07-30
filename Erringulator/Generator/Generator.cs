@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Erringulator.Generator
+namespace Erringulator.Randomizer
 {
     // To whom it may concern:
     // I already know there's a lot of slow, sloppy code in here,
     // so you don't need to tell me.
-    internal partial class Generator
+    internal partial class Randomizer
     {
-        private readonly GeneratorSettings Settings;
+        private readonly RandomizerSettings Settings;
 
         private readonly Random Rand;
 
@@ -19,7 +19,7 @@ namespace Erringulator.Generator
 
         private Dictionary<string, (BinderFile File, PARAM Param)> ParamFiles;
 
-        public Generator(GeneratorSettings settings)
+        public Randomizer(RandomizerSettings settings)
         {
             Settings = settings;
             Rand = new Random(Settings.Seed.GetHashCode());
