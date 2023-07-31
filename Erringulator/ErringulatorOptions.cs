@@ -21,8 +21,6 @@ namespace Erringulator
 
         private static Properties.Settings Settings => Properties.Settings.Default;
 
-        private static readonly Random Rand = new();
-
         public static string TitleVersion
         {
             get
@@ -243,23 +241,6 @@ namespace Erringulator
             Settings.RandomizeWeather = RandomizeWeather;
             Settings.RandomizeWetness = RandomizeWetness;
             Settings.Save();
-        }
-
-        public RandomizerSettings GetGeneratorSettings()
-        {
-            string seed = Seed;
-            if (string.IsNullOrWhiteSpace(seed))
-            {
-                var chars = new char[10];
-                for (int i = 0; i < 10; i++)
-                    chars[i] = (char)('a' + Rand.Next(26));
-                seed = new string(chars);
-            }
-
-            return new RandomizerSettings(InputDir, LoadBackup, OutputDir, seed, ProjectileQuantity,
-                RandomizeArmor, RandomizeDecals, RandomizeFaces, RandomizeGrass,
-                RandomizePhantoms, RandomizeProjectiles, RandomizePropEffects, RandomizeRings, RandomizeSpells, RandomizeUsableItems,
-                RandomizeWeapons, RandomizeWeather, RandomizeWetness);
         }
     }
 }

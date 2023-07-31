@@ -1,8 +1,4 @@
-﻿using Erringulator.Randomizer;
-using System;
-using System.Diagnostics;
-using System.Media;
-using System.Reflection;
+﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -35,20 +31,7 @@ namespace Erringulator
             Progress.Bar.Maximum = 1;
             Progress.Text = "Randomizing...";
 
-            RandomizerSettings generatorSettings = Options.GetGeneratorSettings();
-            var generator = new Randomizer.Randomizer(generatorSettings);
-
-            try
-            {
-                await Task.Run(generator.Generate);
-                Options.LastSeed = generatorSettings.Seed;
-                SystemSounds.Beep.Play();
-            }
-            catch (Exception ex) when (!Debugger.IsAttached)
-            {
-                MessageBox.Show($"An error occurred during randomization:\n\n{ex}", 
-                    "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            await Task.Run(() => Generator.Generate(Options));
 
             Progress.Bar.Value = 1;
             Progress.Text = "Done!";

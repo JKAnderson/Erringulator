@@ -4,9 +4,9 @@
     {
         public string InputPath { get; }
 
-        public bool LoadBackup { get; }
-
         public string OutputPath { get; }
+
+        public string ParamdefDir { get; }
 
         public string Seed { get; }
 
@@ -38,14 +38,29 @@
 
         public bool RandomizeWetness { get; }
 
-        public RandomizerSettings(string inputPath, bool loadBackup, string outputPath, string seed, ProjectileQuantity projectileQuantity,
-            bool randomizeArmor, bool randomizeDecal, bool randomizeFaces, bool randomizeGrass, 
-            bool randomizePhantoms, bool randomizeProjectiles, bool randomizePropEffects, bool randomizeRings, bool randomizeSpells, bool randomizeUsableItems,
-            bool randomizeWeapons, bool randomizeWeather, bool randomizeWetness)
+        public RandomizerSettings(
+            string inputPath,
+            string outputPath,
+            string paramdefDir,
+            string seed,
+            ProjectileQuantity projectileQuantity,
+            bool randomizeArmor,
+            bool randomizeDecal,
+            bool randomizeFaces,
+            bool randomizeGrass,
+            bool randomizePhantoms,
+            bool randomizeProjectiles,
+            bool randomizePropEffects,
+            bool randomizeRings,
+            bool randomizeSpells,
+            bool randomizeUsableItems,
+            bool randomizeWeapons,
+            bool randomizeWeather,
+            bool randomizeWetness)
         {
             InputPath = inputPath;
-            LoadBackup = loadBackup;
             OutputPath = outputPath;
+            ParamdefDir = paramdefDir;
             Seed = seed;
             ProjectileQuantity = projectileQuantity;
 

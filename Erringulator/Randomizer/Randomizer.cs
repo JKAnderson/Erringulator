@@ -25,37 +25,22 @@ namespace Erringulator.Randomizer
             Rand = new Random(Settings.Seed.GetHashCode());
         }
 
-        public void Generate()
+        public void Randomize()
         {
-            string inPath = Path.Combine(Settings.InputPath, "regulation.bin");
-            string outPath = Path.Combine(string.IsNullOrWhiteSpace(Settings.OutputPath) ? Settings.InputPath : Settings.OutputPath, "regulation.bin");
             Paramdefs = ReadParamdefs();
-
-            BND4 regulation = ReadRegulation(inPath);
-            Randomize();
-            WriteRegulation(outPath, regulation);
+            BND4 regulation = ReadRegulation(Settings.InputPath);
+            RandomizeParams();
+            WriteRegulation(Settings.OutputPath, regulation);
         }
 
-        private static string GetBakPath(string path)
+        private IEnumerable<PARAMDEF> ReadParamdefs()
         {
-            string dir = Path.GetDirectoryName(path);
-            string name = Path.GetFileNameWithoutExtension(path);
-            string ext = Path.GetExtension(path);
-            return Path.Combine(dir, $"{name}-erringulator-backup{ext}");
-        }
-
-        private static IEnumerable<PARAMDEF> ReadParamdefs()
-        {
-            string dir = @".\res\defs";
-            return Directory.GetFiles(dir, "*.xml").Select(path => PARAMDEF.XmlDeserialize(path)).ToArray();
+            return Directory.GetFiles(Settings.ParamdefDir, "*.xml")
+                .Select(path => PARAMDEF.XmlDeserialize(path)).ToArray();
         }
 
         private BND4 ReadRegulation(string path)
         {
-            string bakPath = GetBakPath(path);
-            if (Settings.LoadBackup && File.Exists(bakPath))
-                path = bakPath;
-
             BND4 bnd = SFUtil.DecryptERRegulation(path);
             ParamFiles = new();
             foreach (BinderFile file in bnd.Files)
@@ -68,10 +53,6 @@ namespace Erringulator.Randomizer
 
         private static void WriteRegulation(string path, BND4 regulation)
         {
-            string bakPath = GetBakPath(path);
-            if (File.Exists(path) && !File.Exists(bakPath))
-                File.Copy(path, bakPath);
-
             SFUtil.EncryptERRegulation(path, regulation);
         }
 
@@ -84,7 +65,7 @@ namespace Erringulator.Randomizer
             return param;
         }
 
-        private void Randomize()
+        private void RandomizeParams()
         {
             void go(string name, Action<PARAM> action)
                 => RandomizeParam(ParamFiles[name], action);
@@ -232,7 +213,8 @@ namespace Erringulator.Randomizer
 
         private void ShuffleFieldSets(IEnumerable<PARAM.Row> rows, params string[] fields)
         {
-            List<object[]> valueSets = rows.Select(row => {
+            List<object[]> valueSets = rows.Select(row =>
+            {
                 var valueSet = new object[fields.Length];
                 for (int i = 0; i < fields.Length; i++)
                     valueSet[i] = row[fields[i]].Value;
