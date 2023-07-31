@@ -18,7 +18,7 @@ namespace Erringulator
         }
 
         public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register("Label", typeof(string), typeof(PathInput));
+            DependencyProperty.Register(nameof(Label), typeof(string), typeof(PathInput));
 
         public string Path
         {
@@ -27,7 +27,16 @@ namespace Erringulator
         }
 
         public static readonly DependencyProperty PathProperty =
-            DependencyProperty.Register("Path", typeof(string), typeof(PathInput));
+            DependencyProperty.Register(nameof(Path), typeof(string), typeof(PathInput));
+
+        public string BrowseDescription
+        {
+            get => (string)GetValue(BrowseDescriptionProperty);
+            set => SetValue(BrowseDescriptionProperty, value);
+        }
+
+        public static readonly DependencyProperty BrowseDescriptionProperty =
+            DependencyProperty.Register(nameof(BrowseDescription), typeof(string), typeof(PathInput));
 
         public PathInput()
         {
@@ -38,9 +47,10 @@ namespace Erringulator
         {
             var dialog = new VistaFolderBrowserDialog()
             {
-                Description = "",
+                Description = BrowseDescription,
                 RootFolder = System.Environment.SpecialFolder.MyComputer,
                 SelectedPath = Path,
+                UseDescriptionForTitle = true,
             };
 
             if (dialog.ShowDialog() ?? false)

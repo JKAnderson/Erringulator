@@ -23,10 +23,12 @@
             <StackPanel>
                 <local:PathInput 
                     Label="Input Directory" 
+                    BrowseDescription="Select the folder containing the regulation.bin to randomize"
                     Path="{Binding InputDir, Mode=TwoWay}"/>
                 <CheckBox IsChecked="{Binding LoadBackup}">Load backup if available</CheckBox>
                 <local:PathInput 
                     Label="Output Directory (leave blank to use input directory)"
+                    BrowseDescription="Select the folder to output the randomized regulation.bin to"
                     Path="{Binding OutputDir, Mode=TwoWay}"/>
                 <Label Content="Progress"/>
                 <Grid>
