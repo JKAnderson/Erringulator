@@ -16,8 +16,8 @@
             </Grid.ColumnDefinitions>
 
             <TextBox Grid.Column="0" Text="{Binding Path}"></TextBox>
-            <Button Grid.Column="1" Visibility="Collapsed">Browse</Button>
-            <Button Grid.Column="2" Visibility="Collapsed">Explore</Button>
+            <Button Grid.Column="1" Click="Button_Browse_Click">Browse</Button>
+            <Button Grid.Column="2" Click="Button_Explore_Click">Explore</Button>
         </Grid>
     </StackPanel>
 </UserControl>

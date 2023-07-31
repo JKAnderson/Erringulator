@@ -23,7 +23,7 @@ namespace Erringulator
             Options.Save();
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Randomize_Click(object sender, RoutedEventArgs e)
         {
             IsEnabled = false;
             Progress.Bar.Value = 0;
@@ -36,6 +36,11 @@ namespace Erringulator
             Progress.Bar.Value = 1;
             Progress.Text = "Done!";
             IsEnabled = true;
+        }
+
+        private void Button_Restore_Click(object sender, RoutedEventArgs e)
+        {
+            Generator.Restore(Options);
         }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d" d:Title="Erringulator 1.0"
         Title="{Binding TitleVersion}"
         Left="{Binding WindowLeft, Mode=TwoWay}" Top="{Binding WindowTop, Mode=TwoWay}"
-        MinWidth="600" Width="800" SizeToContent="Height" ResizeMode="NoResize" 
+        MinWidth="600" Width="900" SizeToContent="Height" ResizeMode="CanMinimize" 
         Closed="Window_Closed">
     <Grid Margin="3">
         <Grid.RowDefinitions>
@@ -37,8 +37,8 @@
                     </Grid.ColumnDefinitions>
 
                     <local:TextProgress x:Name="Progress"/>
-                    <Button Grid.Column="1" Click="Button_Click">Randomize</Button>
-                    <Button Grid.Column="2" Visibility="{Binding DebugVisibility}">Restore</Button>
+                    <Button Grid.Column="1" Click="Button_Randomize_Click">Randomize</Button>
+                    <Button Grid.Column="2" Click="Button_Restore_Click">Restore</Button>
                 </Grid>
             </StackPanel>
         </GroupBox>

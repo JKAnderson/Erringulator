@@ -32,11 +32,41 @@ namespace Erringulator
             }
         }
 
+        public static void Restore(ErringulatorOptions options)
+        {
+            try
+            {
+                string outputPath = GetOutputPath(options);
+                string bakPath = GetBakPath(outputPath);
+                if (File.Exists(bakPath))
+                {
+                    File.Copy(bakPath, outputPath, true);
+                    SystemSounds.Beep.Play();
+                }
+                else
+                {
+                    MessageBox.Show($"No backup file found at:\n\n{bakPath}",
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex) when (!Debugger.IsAttached)
+            {
+                MessageBox.Show($"An error occurred while restoring files:\n\n{ex}",
+                        "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private static void BackupFile(string path)
         {
             string bakPath = GetBakPath(path);
             if (File.Exists(path) && !File.Exists(bakPath))
                 File.Copy(path, bakPath);
+        }
+
+        private static string GetOutputPath(ErringulatorOptions options)
+        {
+            string outputDir = string.IsNullOrWhiteSpace(options.OutputDir) ? options.InputDir : options.OutputDir;
+            return Path.Combine(outputDir, "regulation.bin");
         }
 
         private static RandomizerSettings GetRandomizerSettings(ErringulatorOptions options)
@@ -46,8 +76,7 @@ namespace Erringulator
             if (options.LoadBackup && File.Exists(inputBakPath))
                 inputPath = inputBakPath;
 
-            string outputDir = string.IsNullOrWhiteSpace(options.OutputDir) ? options.InputDir : options.OutputDir;
-            string outputPath = Path.Combine(outputDir, "regulation.bin");
+            string outputPath = GetOutputPath(options);
 
             string paramdefDir = @".\res\defs";
 
