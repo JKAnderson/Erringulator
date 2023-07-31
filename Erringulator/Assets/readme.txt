@@ -34,7 +34,7 @@ Disclaimers
 Usage
 --------------------------------------------------
 
-1. Ensure that you have extracted the mod's entire zip file to its own directory before running Erringulator.exe
+1. Ensure that you have extracted the mod's entire zip file to its own directory before running Erringulator.exe.
 
 2. Enter your game directory in the "Input Directory" field. This must be the folder that contains regulation.bin.
    If you want to randomize the output from another mod, set the input directory to that mod's location instead.
