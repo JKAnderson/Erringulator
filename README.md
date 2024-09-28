@@ -6,7 +6,8 @@ For installation and usage instructions, please refer to the readme included wit
 ## Credits
 
 [DSMapStudio](https://github.com/soulsmods/DSMapStudio)  
-[Ookii.Dialogs.Wpf](https://github.com/ookii-dialogs/ookii-dialogs-wpf)
+[Ookii.Dialogs.Wpf](https://github.com/ookii-dialogs/ookii-dialogs-wpf)  
+[Smithbox](https://github.com/vawser/Smithbox)  
 
 *Licenses included in* `Erringulator/Assets/Licenses`
 

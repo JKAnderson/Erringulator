@@ -36,13 +36,13 @@ namespace Erringulator.Randomizer
         private IEnumerable<PARAMDEF> ReadParamdefs()
         {
             return Directory.GetFiles(Settings.ParamdefDir, "*.xml")
-                .Select(path => PARAMDEF.XmlDeserialize(path)).ToArray();
+                .Select(PARAMDEF.XmlDeserialize).ToArray();
         }
 
         private BND4 ReadRegulation(string path)
         {
             BND4 bnd = SFUtil.DecryptERRegulation(path);
-            ParamFiles = new();
+            ParamFiles = [];
             foreach (BinderFile file in bnd.Files)
             {
                 string name = Path.GetFileNameWithoutExtension(file.Name);
@@ -53,6 +53,8 @@ namespace Erringulator.Randomizer
 
         private static void WriteRegulation(string path, BND4 regulation)
         {
+            // zstd is slow
+            regulation.Compression = DCX.Type.DCX_DFLT_11000_44_9_15;
             SFUtil.EncryptERRegulation(path, regulation);
         }
 

@@ -1,11 +1,12 @@
-Erringulator 0.1.0 for Elden Ring 1.10
+
+Erringulator 0.1.1 for Elden Ring 1.14.1
 https://github.com/JKAnderson/Erringulator
 --------------------------------------------------
 
 This is a barebones early release of Erringulator; if you wish to use it, be sure to read this document thoroughly first.
 Questions already answered here will be promptly ignored.
 
-This program requires .NET 7.0; you probably already have it, but if not you can find it here:
+This program requires .NET 8.0; you probably already have it, but if not you can find it here:
 https://dotnet.microsoft.com/en-us/download
 
 
@@ -21,7 +22,7 @@ Starting in offline mode, using Mod Engine to apply the mod, and playing on an a
 Disclaimers
 --------------------------------------------------
 
-- This mod is intended for Elden Ring version 1.10. If you try to use it with any other version of the game, you're on your own.
+- This mod is intended for Elden Ring version 1.14.1. If you try to use it with any other version of the game, you're on your own.
 
 - Depending on your selected settings, game crashes range from possible to likely to almost guaranteed. This is not considered a bug.
 
@@ -119,6 +120,9 @@ https://github.com/soulsmods/DSMapStudio
 Ookii.Dialogs.Wpf
 https://github.com/ookii-dialogs/ookii-dialogs-wpf
 
+Smithbox
+https://github.com/vawser/Smithbox
+
 
 --------------------------------------------------
 Special Thanks
@@ -126,3 +130,24 @@ Special Thanks
 
 Mechapope, for making the original Paramdomizer
 https://github.com/Mechapope/Paramdomizer
+
+
+--------------------------------------------------
+Changelog
+--------------------------------------------------
+
+0.1.1
+
+- Fixed greatshields not being randomized
+- Support for ER 1.14.1
+
+0.1.0
+
+- Added seed options
+- Added browse and explore buttons
+- Added restore button
+- Support for ER 1.10
+
+0.0.0
+
+- Initial testing prerelease

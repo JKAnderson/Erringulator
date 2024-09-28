@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Fixed greatshields not being randomized
+- Support for ER 1.14.1
+
 ## 0.1.0
 
 - Added seed options
